@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574b</color>
+    <color name="colorAccent">#d81b60</color>
+    <color name="black_overlay">#000000</color>
+    <color name="fondo_celeste">#9ACCf4</color>
+    <color name="fondo_gris_boton">#d7ddde</color>
+    <color name="fondo_toolbar_y_letras_botones">#03a9f4</color>
+    <color name="letras_y_titulos">#dd4e00</color>
+    <color name="blanco">#ffffff</color>
+    <color name="fondo_TP_Eq_Fix">#f5f5f5</color>
+    <color name="letras_Tabla">#00577e</color>
+    <color name="letras_formulario">#EF6C00</color>
+    <color name="rojo">#D50000</color>
+    <color name="azul_oscuro">#1565C0</color>
+
+</resources>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo_celeste"
+    tools:context="posteAltoMovile.activity.NuevoUsuario">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:srcCompat="@mipmap/poste_alto_logo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="377dp"
+        android:layout_height="516dp"
+        android:layout_gravity="center"
+        android:background="@color/blanco">
+
+
+        <ImageView
+            android:id="@+id/imageViewAvatar"
+            android:layout_width="91dp"
+            android:layout_height="69dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSelecImagen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/img_dunk" />
+
+        <Button
+            android:id="@+id/buttonSelecImagen"
+            android:layout_width="197dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/boton_borde_redondo"
+            android:text="Seleccionar Imagen"
+            android:textColor="@color/letras_formulario"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="31dp"
+            android:text="Nombre"
+            android:textColor="@color/letras_formulario"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar" />
+
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="284dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewNombre"
+                app:layout_constraintTop_toBottomOf="@+id/buttonSelecImagen" />
+
+        <TextView
+            android:id="@+id/textViewApellido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="31dp"
+            android:text="Apellido"
+            android:textColor="@color/letras_formulario"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNombre" />
+
+        <EditText
+            android:id="@+id/editTextApellido"
+            android:layout_width="290dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewApellido"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
+
+        <TextView
+            android:id="@+id/textViewFechaNacimiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="31dp"
+            android:text="Fecha de Nacimiento"
+            android:textColor="@color/letras_formulario"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewApellido" />
+
+        <EditText
+            android:id="@+id/editTextFecha"
+            android:layout_width="194dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:clickable="true"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Seleccionar fecha"
+            android:inputType="none"
+            android:textIsSelectable="false"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewFechaNacimiento"
+            app:layout_constraintTop_toBottomOf="@+id/editTextApellido" />
+
+        <TextView
+            android:id="@+id/textViewCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="31dp"
+            android:text="Correo"
+            android:textColor="@color/letras_formulario"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFechaNacimiento" />
+
+
+        <EditText
+            android:id="@+id/editTextCorreo"
+            android:layout_width="296dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewCorreo"
+            app:layout_constraintTop_toBottomOf="@+id/editTextFecha" />
+
+        <TextView
+            android:id="@+id/textViewVerifCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:text="Verif.Correo"
+            android:textColor="@color/letras_formulario"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCorreo" />
+
+        <EditText
+            android:id="@+id/editTextVerifCorreo"
+            android:layout_width="255dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewVerifCorreo"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCorreo" />
+
+        <TextView
+            android:id="@+id/textViewContraseña"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:text="Contraseña"
+            android:textColor="@color/letras_formulario"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewVerifCorreo" />
+
+        <EditText
+            android:id="@+id/editTextContraseña"
+            android:layout_width="258dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewContraseña"
+            app:layout_constraintTop_toBottomOf="@+id/editTextVerifCorreo" />
+
+        <TextView
+            android:id="@+id/textViewVerfiContraseña"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="160dp"
+            android:text="Verif.Contraseña"
+            android:textColor="@color/letras_formulario"
+            android:textSize="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCorreo" />
+
+        <EditText
+            android:id="@+id/editTextVerifContraseña"
+            android:layout_width="215dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewVerfiContraseña"
+            app:layout_constraintTop_toBottomOf="@+id/editTextContraseña" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/buttonRegistrar"
+        android:layout_width="248dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/boton_registrar_modificar"
+        android:text="REGISTRATE"
+        android:textColor="@color/fondo_toolbar_y_letras_botones" />
+
+</LinearLayout>

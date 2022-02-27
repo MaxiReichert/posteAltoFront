@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo_celeste"
+    tools:context="posteAltoMovile.activity.Autenticar">
+
+    <ImageView
+        android:id="@+id/imageViewBanner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="80dp"
+        app:srcCompat="@mipmap/poste_alto_logo" />
+
+    <TextView
+        android:id="@+id/textViewSms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:text="Número celular"
+        android:textStyle="bold"
+        android:textColor="@color/azul_oscuro"/>
+
+    <EditText
+        android:id="@+id/editTextSms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:minHeight="48dp" />
+
+    <Button
+        android:id="@+id/buttonEnviarEmail"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/boton_registrar_modificar"
+        android:text="Enviar Email"
+        android:textColor="@color/fondo_toolbar_y_letras_botones" />
+
+
+</LinearLayout>

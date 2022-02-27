@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PosteALtoMovile" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/fondo_toolbar_y_letras_botones</item>
+        <item name="colorPrimaryDark">@color/fondo_celeste</item>
+        <item name="colorAccent">@color/fondo_toolbar_y_letras_botones</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+    <style name="Theme.PosteALtoMovile.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.PosteALtoMovile.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.PosteALtoMovile.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
