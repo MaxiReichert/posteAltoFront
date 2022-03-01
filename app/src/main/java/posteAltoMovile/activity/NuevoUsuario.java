@@ -74,7 +74,6 @@ public class NuevoUsuario extends AppCompatActivity {
 
         firebaseAuth= FirebaseAuth.getInstance();
 
-
          editTextFecha= findViewById(R.id.editTextFecha);
          btnSeleccionarImagen= findViewById(R.id.buttonSelecImagen);
          imageViewAvatar= findViewById(R.id.imageViewAvatar);

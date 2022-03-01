@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/optInicio"
+            android:icon="@mipmap/icon_home"
+            android:title="INICIO"></item>
+        <item
+            android:id="@+id/optNoticias"
+            android:icon="@mipmap/icon_news"
+            android:title="NOTICIAS"></item>
+        <item
+            android:id="@+id/optResultados"
+            android:icon="@mipmap/icon_score"
+            android:title="FIXTURE Y RESULTADOS"></item>
+        <item
+            android:id="@+id/optGym"
+            android:icon="@mipmap/icon_marca"
+            android:title="GIMNASIOS" />
+        <item
+            android:id="@+id/optContacto"
+            android:icon="@mipmap/icon_contact"
+            android:title="CONTACTO"></item>
+    </group>
+
+</menu>

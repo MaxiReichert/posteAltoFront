@@ -1,0 +1,79 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="posteAltoMovile.fragment.MenuPrincipal">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/menuPpal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/fondo_celeste"
+        android:orientation="vertical"
+        tools:context="posteAltoMovile.activity.PrincipalActivity">
+
+        <!-- Contenido -->
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnSuscripcion"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_margin="35dp"
+                android:background="@drawable/bordes_botones"
+                android:text="SEGUÍ TUS EQUIPOS"
+                android:textColor="@color/fondo_toolbar_y_letras_botones"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnFixture"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_margin="35dp"
+                android:background="@drawable/bordes_botones"
+                android:text="FIXTURE"
+                android:textColor="@color/fondo_toolbar_y_letras_botones"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnPosicion"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_margin="35dp"
+                android:background="@drawable/bordes_botones"
+                android:text="TABLA DE POSICIONES"
+                android:textColor="@color/fondo_toolbar_y_letras_botones"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnNoticias"
+                android:layout_width="200dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_margin="35dp"
+                android:background="@drawable/bordes_botones"
+                android:text="NOTICIAS"
+                android:textColor="@color/fondo_toolbar_y_letras_botones"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

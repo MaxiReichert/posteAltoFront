@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_celeste"
+    android:fitsSystemWindows="true"
+    tools:context="posteAltoMovile.activity.PrincipalActivity">
+
+    <FrameLayout
+        android:id="@+id/contenido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></FrameLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@color/fondo_celeste"
+        android:fitsSystemWindows="true"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:touchscreenBlocksFocus="false"
+        app:headerLayout="@layout/menu_encabezado"
+        app:itemIconTint="@color/letras_y_titulos"
+        app:itemTextAppearance="@color/letras_y_titulos"
+        app:itemTextColor="@color/letras_y_titulos"
+        app:menu="@menu/menu_opciones" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
