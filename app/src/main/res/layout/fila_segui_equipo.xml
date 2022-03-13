@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black_overlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/fondoLista">
+
+        <ImageView
+            android:id="@+id/imImagen"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:id="@+id/tvEquipo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="50dp"
+            android:text="Recreativo A"
+            android:textColor="@color/black_overlay"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/cbSigue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0"
+            android:backgroundTint="@color/fondoLista"
+            android:buttonTint="@color/letras_y_titulos"
+            android:checked="true"
+            android:hapticFeedbackEnabled="true"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textColorLink="@color/letras_y_titulos" />
+    </LinearLayout>
+
+    </LinearLayout>

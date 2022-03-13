@@ -16,8 +16,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import posteAlto.postealtomovile.R;
 import posteAltoMovile.fragment.MenuPrincipal;
+import posteAltoMovile.fragment.SeguiTuEquipo;
 
-public class PrincipalActivity extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity implements MenuPrincipal.OnSeguiTuEquipoListener {
 
     private DrawerLayout drawerLayout;
     private NavigationView navView;
@@ -90,5 +91,22 @@ public class PrincipalActivity extends AppCompatActivity {
 
         if(count > 1)
             getSupportFragmentManager().popBackStack();
+    }
+
+
+    @Override
+    public void mostrarSeguiTuEquipo() {
+        String tag = "seguiTuEquipo";
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if(fragment == null){
+            fragment = new SeguiTuEquipo();
+        }
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.contenido, fragment, tag)
+                .addToBackStack(null)
+                .show(fragment)
+                .commit();
     }
 }

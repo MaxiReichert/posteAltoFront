@@ -1,7 +1,9 @@
 package posteAltoMovile.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +19,11 @@ public class MenuPrincipal extends Fragment{
     private Button btnFixture;
     private Button btnPosiciones;
     private Button btnNoticias;
+    private OnSeguiTuEquipoListener seguiTuEquipoListener;
+
+    public interface OnSeguiTuEquipoListener{
+        void mostrarSeguiTuEquipo();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +39,7 @@ public class MenuPrincipal extends Fragment{
         btnSuscripcion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //agregar comportamiento cuando se crea la pantalla
+                seguiTuEquipoListener.mostrarSeguiTuEquipo();
             }
         });
 
@@ -61,4 +68,10 @@ public class MenuPrincipal extends Fragment{
     }
 
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        this.seguiTuEquipoListener= (OnSeguiTuEquipoListener) context;
+    }
 }
