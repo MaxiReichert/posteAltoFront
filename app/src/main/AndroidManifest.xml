@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PosteALtoMovile">
         <activity
+            android:name="posteAltoMovile.activity.CargarCodigoRecuperacion"
+            android:exported="false" />
+        <activity
             android:name="posteAltoMovile.activity.PrincipalActivity"
             android:exported="false" />
         <activity

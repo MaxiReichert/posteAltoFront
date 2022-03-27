@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         btnAutenticar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), PrincipalActivity.class);
+                Intent i = new Intent(view.getContext(), Autenticar.class);
                 startActivity(i);
             }
         });

@@ -1,5 +1,8 @@
 package posteAltoMovile.dao;
 
+import posteAltoMovile.model.ModificarPasswordRequest;
+import posteAltoMovile.model.ResetPasswordRequest;
+import posteAltoMovile.model.ResetPasswordResponse;
 import posteAltoMovile.model.ResponseBackend;
 import posteAltoMovile.model.Usuario;
 import retrofit2.Call;
@@ -24,4 +27,10 @@ public interface UsuarioDAO {
 
     @GET("usuario/buscarEmail/{email}")
     Call<ResponseBackend> buscarPorEmail(@Path("email") String email);
+
+    @POST("usuario/resetPassword")
+    Call<ResetPasswordResponse> resetPassword(@Body ResetPasswordRequest request);
+
+    @POST("usuario/modificarPassword")
+    Call<ResponseBackend> modificarPassword(@Body ModificarPasswordRequest request);
 }

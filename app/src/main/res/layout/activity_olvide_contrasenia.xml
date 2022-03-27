@@ -16,22 +16,22 @@
         app:srcCompat="@mipmap/poste_alto_logo" />
 
     <TextView
-        android:id="@+id/textViewSms"
+        android:id="@+id/textViewCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
-        android:text="Número celular"
+        android:text="Correo Electronico"
         android:textStyle="bold"
         android:textColor="@color/azul_oscuro"/>
 
     <EditText
-        android:id="@+id/editTextSms"
+        android:id="@+id/editTextCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:ems="10"
-        android:inputType="phone"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp" />
 
     <Button

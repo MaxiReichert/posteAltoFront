@@ -233,7 +233,7 @@
         android:layout_width="248dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/boton_registrar_modificar"
         android:text="REGISTRATE"
         android:textColor="@color/fondo_toolbar_y_letras_botones" />

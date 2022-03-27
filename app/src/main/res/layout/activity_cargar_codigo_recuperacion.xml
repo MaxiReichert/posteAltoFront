@@ -16,22 +16,23 @@
         app:srcCompat="@mipmap/poste_alto_logo" />
 
     <TextView
-        android:id="@+id/textViewCorreo"
+        android:id="@+id/textViewCodigoRecuperacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
-        android:text="Correo electrónico"
+        android:text="Codigo de Recuperación"
         android:textStyle="bold"
         android:textColor="@color/azul_oscuro"/>
 
     <EditText
-        android:id="@+id/editTextCorreo"
+        android:id="@+id/editTextCodigoRecuperacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="number"
+        android:maxLength="6"
         android:minHeight="48dp" />
 
     <TextView
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
-        android:text="Contraseña"
+        android:text="Nueva Contraseña"
         android:textStyle="bold"
         android:textColor="@color/azul_oscuro"/>
 
@@ -51,35 +52,47 @@
         android:layout_marginLeft="5dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:minHeight="48dp" />
 
     <TextView
-        android:id="@+id/textViewErrorSesión"
+        android:id="@+id/textViewVerfiContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
+        android:text="Repetir Contraseña"
         android:textStyle="bold"
-        android:textColor="@color/rojo"/>
+        android:textColor="@color/azul_oscuro"/>
+
+    <EditText
+        android:id="@+id/editTextVerifContraseña"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:maxLength="6"
+        android:minHeight="48dp" />
 
     <Button
-        android:id="@+id/buttonIniciarSesion"
+        android:id="@+id/buttonCodigoRecuperacion"
         android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="@drawable/boton_registrar_modificar"
-        android:text="Iniciar Sesión"
+        android:text="Enviar código"
         android:textColor="@color/fondo_toolbar_y_letras_botones" />
 
-    <TextView
-        android:id="@+id/textViewOlvidasteContraseña"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/buttonModifContraseña"
+        android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:text="¿Olvidaste la contraseña?"
-        android:textStyle="bold"
-        android:textColor="@color/azul_oscuro"/>
+        android:background="@drawable/boton_registrar_modificar"
+        android:text="Modificar Contraseña"
+        android:textColor="@color/fondo_toolbar_y_letras_botones" />
+
 
 </LinearLayout>

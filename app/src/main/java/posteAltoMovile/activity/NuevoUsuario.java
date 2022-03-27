@@ -62,8 +62,6 @@ public class NuevoUsuario extends AppCompatActivity {
     private EditText editTextVerifContraseña;
     private EditText editTextNombre;
 
-    private FirebaseAuth firebaseAuth;
-
     private int anio, mes, dia;
 
     @Override
@@ -71,8 +69,6 @@ public class NuevoUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_usuario);
         setTitle("Nuevo Usuario");
-
-        firebaseAuth= FirebaseAuth.getInstance();
 
          editTextFecha= findViewById(R.id.editTextFecha);
          btnSeleccionarImagen= findViewById(R.id.buttonSelecImagen);
