@@ -1,0 +1,92 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="posteAltoMovile.fragment.FixtureFragment">
+
+    <LinearLayout
+        android:id="@+id/menuPpal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/fondo_celeste"
+        android:orientation="vertical"
+        tools:context=".Activity.PrincipalActivity">
+
+        <!-- Contenido -->
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:background="@color/fondo_gris_boton"
+            android:gravity="center"
+            android:text="FIXTURE"
+            android:textColor="@color/letras_y_titulos"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/txtFecha"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/fondoLista"
+            android:gravity="center"
+            android:text="FECHA 1"
+            android:textColor="@color/letras_y_titulos"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ivPrevious"
+                android:layout_width="34dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_media_previous"
+                android:background="@color/fondo_celeste"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFecha"
+                android:layout_width="310dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/fondoLista">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <ImageButton
+                android:id="@+id/ivNext"
+                android:layout_width="34dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_media_next"
+                android:background="@color/fondo_celeste"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtEquipoLibre"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/fondoLista"
+            android:gravity="center"
+            android:text="Libre: Olimpia"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+</FrameLayout>

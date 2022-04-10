@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import posteAlto.postealtomovile.R;
+import posteAltoMovile.Listener.OnMostrarFixtureListener;
+import posteAltoMovile.Listener.OnSeguiTuEquipoListener;
 
 public class MenuPrincipal extends Fragment{
 
@@ -20,10 +22,7 @@ public class MenuPrincipal extends Fragment{
     private Button btnPosiciones;
     private Button btnNoticias;
     private OnSeguiTuEquipoListener seguiTuEquipoListener;
-
-    public interface OnSeguiTuEquipoListener{
-        void mostrarSeguiTuEquipo();
-    }
+    private OnMostrarFixtureListener mostrarFixtureListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +45,7 @@ public class MenuPrincipal extends Fragment{
         btnFixture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //agregar comportamiento cuando se crea la pantalla
+                mostrarFixtureListener.mostrarFixture();
             }
         });
 
@@ -73,5 +72,6 @@ public class MenuPrincipal extends Fragment{
         super.onAttach(context);
 
         this.seguiTuEquipoListener= (OnSeguiTuEquipoListener) context;
+        this.mostrarFixtureListener= (OnMostrarFixtureListener) context;
     }
 }

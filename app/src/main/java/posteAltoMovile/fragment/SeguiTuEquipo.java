@@ -33,12 +33,13 @@ public class SeguiTuEquipo extends Fragment {
     static final int ERROR=2;
     ListView lvSeguiEquipo;
     List<Equipo> listaEquipos= new ArrayList<Equipo>();
+    private String accessToken;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.fragment_segui_tu_equipo, container, false);
-
+        accessToken= getArguments().getString("accessToken");
         buscarEquipos();
         lvSeguiEquipo = (ListView) v.findViewById(R.id.lvSegui);
 
@@ -50,7 +51,7 @@ public class SeguiTuEquipo extends Fragment {
             @Override
             public void run() {
                 EquipoDAO equipoDAO= RestClient.getInstance().getRetrofit().create(EquipoDAO.class);
-                Call<List<Equipo>> callEquipos= equipoDAO.getAll();
+                Call<List<Equipo>> callEquipos= equipoDAO.getAll("Bearer "+accessToken);
                 try{
                     Response<List<Equipo>> response= callEquipos.execute();
                     Message mensaje;

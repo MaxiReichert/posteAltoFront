@@ -108,7 +108,11 @@ public class Autenticar extends AppCompatActivity {
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1:
-                    System.out.println(((ResponseLogin)msg.obj).toString());
+                    ResponseLogin responseLogin= (ResponseLogin) msg.obj;
+                    Intent i = new Intent(getApplicationContext(), PrincipalActivity.class);
+                    i.putExtra("accessToken", responseLogin.getAccessToken());
+                    i.putExtra("refreshToken", responseLogin.getRefreshToken());
+                    startActivity(i);
                     break;
                 case 2:
                     textViewError.setText("Usuario o contraseña incorrectos");
