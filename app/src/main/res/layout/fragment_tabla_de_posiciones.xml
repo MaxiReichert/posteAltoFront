@@ -1,0 +1,50 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="posteAltoMovile.fragment.TablaDePosicionesFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/fondo_celeste"
+        android:orientation="vertical"
+        tools:context= "posteAltoMovile.activity.PrincipalActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@color/fondo_gris_boton"
+            android:gravity="center"
+            android:text="Tabla de Posiciones"
+            android:textColor="@color/letras_y_titulos"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fondoLista"
+            android:text="                EQUIPO                          PG     PP       TF       TC         D"
+            android:textColor="@color/letras_y_titulos"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/lvTabla"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/fondoLista"/>
+    </LinearLayout>
+
+</FrameLayout>

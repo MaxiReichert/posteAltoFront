@@ -22,17 +22,20 @@ import java.io.IOException;
 
 import posteAlto.postealtomovile.R;
 import posteAltoMovile.Listener.OnMostrarFixtureListener;
+import posteAltoMovile.Listener.OnMostrarTablaDePosiconesListener;
 import posteAltoMovile.Listener.OnSeguiTuEquipoListener;
 import posteAltoMovile.dao.CompetenciaDAO;
 import posteAltoMovile.fragment.FixtureFragment;
 import posteAltoMovile.fragment.MenuPrincipal;
 import posteAltoMovile.fragment.SeguiTuEquipo;
+import posteAltoMovile.fragment.TablaDePosicionesFragment;
 import posteAltoMovile.model.Competencia;
 import posteAltoMovile.retroFitClient.RestClient;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEquipoListener, OnMostrarFixtureListener {
+public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEquipoListener,
+        OnMostrarFixtureListener, OnMostrarTablaDePosiconesListener {
 
     private final static int COMPETENCIA_ENCONTADA=1;
     private final static int COMPETENCIA_NO_ENCONTRADA=2;
@@ -78,6 +81,17 @@ public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEqu
                         }
                         fragmentTransaction = true;
                         break;
+                    case R.id.optResultados:
+                        tag = "fixture";
+                        Bundle args= new Bundle();
+                        args.putString("accessToken", accessToken);
+                        args.putInt("idCompetencia", competencia.getId());
+                        fragment = getSupportFragmentManager().findFragmentByTag(tag);
+                        if (fragment == null) {
+                            fragment = new FixtureFragment();
+                        }
+                        fragment.setArguments(args);
+                        fragmentTransaction = true;
                 }
                 if (fragmentTransaction) {
                     getSupportFragmentManager()
@@ -148,6 +162,26 @@ public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEqu
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
         if(fragment == null){
             fragment = new FixtureFragment();
+        }
+
+        fragment.setArguments(args);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.contenido, fragment, tag)
+                .addToBackStack(null)
+                .show(fragment)
+                .commit();
+    }
+
+    @Override
+    public void mostrarTablaDePosicones() {
+        String tag= "tablaPosiciones";
+        Bundle args= new Bundle();
+        args.putString("accessToken", accessToken);
+        args.putInt("idCompetencia", competencia.getId());
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
+        if(fragment == null){
+            fragment = new TablaDePosicionesFragment();
         }
 
         fragment.setArguments(args);

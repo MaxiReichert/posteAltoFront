@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import posteAlto.postealtomovile.R;
 import posteAltoMovile.Listener.OnMostrarFixtureListener;
+import posteAltoMovile.Listener.OnMostrarTablaDePosiconesListener;
 import posteAltoMovile.Listener.OnSeguiTuEquipoListener;
 
 public class MenuPrincipal extends Fragment{
@@ -23,6 +24,7 @@ public class MenuPrincipal extends Fragment{
     private Button btnNoticias;
     private OnSeguiTuEquipoListener seguiTuEquipoListener;
     private OnMostrarFixtureListener mostrarFixtureListener;
+    private OnMostrarTablaDePosiconesListener mostrarTablaDePosiconesListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +54,7 @@ public class MenuPrincipal extends Fragment{
         btnPosiciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //agregar comportamiento cuando se crea la pantalla
+                mostrarTablaDePosiconesListener.mostrarTablaDePosicones();
             }
         });
 
@@ -73,5 +75,6 @@ public class MenuPrincipal extends Fragment{
 
         this.seguiTuEquipoListener= (OnSeguiTuEquipoListener) context;
         this.mostrarFixtureListener= (OnMostrarFixtureListener) context;
+        this.mostrarTablaDePosiconesListener= (OnMostrarTablaDePosiconesListener) context;
     }
 }
