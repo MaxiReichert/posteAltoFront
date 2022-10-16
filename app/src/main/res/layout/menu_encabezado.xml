@@ -6,11 +6,22 @@
     android:background="@color/fondo_celeste">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:id="@+id/imagenDeUsuario"
+        android:layout_width="164dp"
+        android:layout_height="119dp"
         android:layout_margin="30dp"
         android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/poste_alto_logo" />
+        android:src="@mipmap/img_dunk" />
+
+    <TextView
+        android:id="@+id/textViewNombreUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="200dp"
+        android:textStyle="bold"
+        android:textColor="@color/azul_oscuro"/>
+
 
 </FrameLayout>

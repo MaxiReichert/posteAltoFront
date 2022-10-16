@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
 
 import posteAlto.postealtomovile.R;
 import posteAltoMovile.dao.UsuarioDAO;
@@ -93,7 +95,9 @@ public class CargarCodigoRecuperacion extends AppCompatActivity {
 
                 if(validarContraseña()){
                     ModificarPasswordRequest request= new ModificarPasswordRequest();
-                    request.setNuevaContraseña(editTextContraseña.getText().toString().trim());
+                    byte[] pass= editTextContraseña.getText().toString().trim().getBytes(StandardCharsets.UTF_8);
+                    String passEncode= Base64.encodeToString(pass, Base64.NO_WRAP);
+                    request.setNuevaContraseña(passEncode);
                     request.setResetToken(token);
                     modificarContraseña(request);
                 }
@@ -110,6 +114,11 @@ public class CargarCodigoRecuperacion extends AppCompatActivity {
 
         if(editTextVerifContraseña.getText() == null || editTextVerifContraseña.getText().toString().trim().equals("")){
             editTextVerifContraseña.setError("El campo es obligatorio");
+            return false;
+        }
+
+        if(!editTextContraseña.getText().toString().trim().equals(editTextVerifContraseña.getText().toString().trim())){
+            editTextVerifContraseña.setError("Los campos no coinciden");
             return false;
         }
 

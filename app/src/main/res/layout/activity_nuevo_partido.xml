@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo_celeste"
+    tools:context="posteAltoMovile.activity.NuevoPartido">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/tvLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Equipo Local"/>
+
+    <Spinner
+        android:id="@+id/spiLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:id="@+id/tvVisitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Equipo Visitante"/>
+
+    <Spinner
+        android:id="@+id/spiVisitante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de Juego"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etFechaJuego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Seleccionar fecha"
+            android:inputType="none"
+            android:textIsSelectable="false"/>
+
+        <EditText
+            android:id="@+id/etHoraDeJuego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Seleccionar hora"
+            android:inputType="none"
+            android:textIsSelectable="false"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvFechaCompetencia"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Fecha Competencia: "
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/etFechaCompetencia"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:layout_marginLeft="20dp"
+            android:maxLength="2"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonNuevoPartido"
+        android:layout_width="248dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/boton_registrar_modificar"
+        android:text="CREAR PARTIDO"
+        android:textColor="@color/fondo_toolbar_y_letras_botones" />
+
+</LinearLayout>

@@ -1,7 +1,6 @@
 package posteAltoMovile.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,10 +12,12 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
+import android.util.Base64;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 
@@ -25,11 +26,13 @@ import posteAltoMovile.Listener.OnMostrarFixtureListener;
 import posteAltoMovile.Listener.OnMostrarTablaDePosiconesListener;
 import posteAltoMovile.Listener.OnSeguiTuEquipoListener;
 import posteAltoMovile.dao.CompetenciaDAO;
+import posteAltoMovile.dao.UsuarioDAO;
 import posteAltoMovile.fragment.FixtureFragment;
 import posteAltoMovile.fragment.MenuPrincipal;
 import posteAltoMovile.fragment.SeguiTuEquipo;
 import posteAltoMovile.fragment.TablaDePosicionesFragment;
 import posteAltoMovile.model.Competencia;
+import posteAltoMovile.model.Usuario;
 import posteAltoMovile.retroFitClient.RestClient;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -43,6 +46,7 @@ public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEqu
 
     private DrawerLayout drawerLayout;
     private NavigationView navView;
+    private TextView textViewNombreUsuario;
     private Competencia competencia;
     private String accessToken;
     private String refreshToken;
@@ -58,6 +62,7 @@ public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEqu
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navView = (NavigationView) findViewById(R.id.navview);
         navView.setItemIconTintList(null);
+        textViewNombreUsuario= navView.getHeaderView(0).findViewById(R.id.textViewNombreUsuario);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,19 +76,24 @@ public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEqu
                 boolean fragmentTransaction = false;
                 Fragment fragment = null;
                 String tag = "";
+                Bundle args = null;
 
                 switch(item.getItemId()){
                     case R.id.optInicio:
                         tag = "menu";
+                        args= new Bundle();
+                        args.putString("accessToken", accessToken);
+                        args.putInt("idCompetencia", competencia.getId());
                         fragment = getSupportFragmentManager().findFragmentByTag(tag);
                         if (fragment == null) {
                             fragment = new MenuPrincipal();
                         }
+                        fragment.setArguments(args);
                         fragmentTransaction = true;
                         break;
                     case R.id.optResultados:
                         tag = "fixture";
-                        Bundle args= new Bundle();
+                        args= new Bundle();
                         args.putString("accessToken", accessToken);
                         args.putInt("idCompetencia", competencia.getId());
                         fragment = getSupportFragmentManager().findFragmentByTag(tag);
@@ -92,6 +102,19 @@ public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEqu
                         }
                         fragment.setArguments(args);
                         fragmentTransaction = true;
+                        break;
+                    case R.id.optTablaPosiciones:
+                        tag= "tablaPosiciones";
+                        args= new Bundle();
+                        args.putString("accessToken", accessToken);
+                        args.putInt("idCompetencia", competencia.getId());
+                        fragment = getSupportFragmentManager().findFragmentByTag(tag);
+                        if(fragment == null){
+                            fragment = new TablaDePosicionesFragment();
+                        }
+                        fragment.setArguments(args);
+                        fragmentTransaction = true;
+                        break;
                 }
                 if (fragmentTransaction) {
                     getSupportFragmentManager()
@@ -225,6 +248,19 @@ public class PrincipalActivity extends AppCompatActivity implements OnSeguiTuEqu
         Thread t= new Thread(r);
         t.start();
     }
+
+    /*private void buscarUsuario(){
+        String[] split= accessToken.split("\\.");
+        UsuarioDAO usuarioDAO= RestClient.getInstance().getRetrofit().create(UsuarioDAO.class);
+        Call<Usuario> callBuscarPorEmail= usuarioDAO.buscarPorEmail("");
+
+        try{
+            Response<Usuario> response= callBuscarPorEmail.execute();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }*/
 
     Handler handler= new Handler(){
         @Override

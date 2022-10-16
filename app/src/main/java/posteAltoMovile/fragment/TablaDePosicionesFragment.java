@@ -12,7 +12,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.TableLayout;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,8 +21,6 @@ import posteAlto.postealtomovile.R;
 import posteAltoMovile.adapter.TablaDePosicionesAdapter;
 import posteAltoMovile.dao.TablaDePosicionesDAO;
 import posteAltoMovile.model.FilaTabla;
-import posteAltoMovile.model.Partido;
-import posteAltoMovile.model.ResponseBackend;
 import posteAltoMovile.retroFitClient.RestClient;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -35,7 +33,8 @@ public class TablaDePosicionesFragment extends Fragment {
 
     private String accessToken;
     private Integer idCompetencia;
-    private ListView lvTablaPosiciones;
+    private TableLayout lvTablaPosiciones;
+    private List<FilaTabla> filaTablaList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,10 +44,19 @@ public class TablaDePosicionesFragment extends Fragment {
         accessToken= getArguments().getString("accessToken");
         Integer idCompetencia= getArguments().getInt("idCompetencia");
 
-        lvTablaPosiciones= v.findViewById(R.id.lvTabla);
+        //lvTablaPosiciones= v.findViewById(R.id.lvTabla);
+        lvTablaPosiciones= v.findViewById(R.id.TablaPosiciones);
         getTablaDePosiciones(idCompetencia);
 
         return v;
+    }
+
+    private void cargarTabla(){
+        TablaDePosicionesAdapter adapter= new TablaDePosicionesAdapter();
+        for(int position=0; position<filaTablaList.size(); position++){
+            View fila= adapter.getView(filaTablaList.get(position), position, getContext());
+            lvTablaPosiciones.addView(fila);
+        }
     }
 
     private void getTablaDePosiciones(Integer idCompetencia){
@@ -89,8 +97,8 @@ public class TablaDePosicionesFragment extends Fragment {
             AlertDialog alertDialog;
             switch (msg.what) {
                 case FILAS_OBTENIDAS:
-                    List<FilaTabla> filaTablaList = (List<FilaTabla>) msg.obj;
-                    lvTablaPosiciones.setAdapter(new TablaDePosicionesAdapter(getContext(), filaTablaList));
+                    filaTablaList = (List<FilaTabla>) msg.obj;
+                    cargarTabla();
                     break;
                 case ERROR_DE_SERVIDOR:
                     alertDialog = new AlertDialog.Builder(getContext()).create();

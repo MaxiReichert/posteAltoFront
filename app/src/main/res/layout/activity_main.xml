@@ -4,27 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:background="@color/fondo_celeste"
     tools:context="posteAltoMovile.activity.MainActivity">
 
-    <Button
-        android:id="@+id/buttonNuevoUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Nuevo Usuario" />
+    <ImageView
+        android:layout_width="394dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:src="@mipmap/baner_pantalla_inicio" />
 
-    <Button
-        android:id="@+id/button2"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Modificar Usuario" />
+        android:layout_marginTop="50dp">
 
-    <Button
-        android:id="@+id/buttonAutenticar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Autenticar" />
+        <Button
+            android:id="@+id/btnRegistrarse"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bordes_botones"
+            android:text="REGISTRARSE"
+            android:textColor="@color/fondo_toolbar_y_letras_botones"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="30dp"/>
+
+        <Button
+            android:id="@+id/btnIniciar"
+            android:layout_width="142dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bordes_botones"
+            android:text="INCIAR SESION"
+            android:textColor="@color/fondo_toolbar_y_letras_botones"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="50dp"/>
+
+    </LinearLayout>
 </LinearLayout>

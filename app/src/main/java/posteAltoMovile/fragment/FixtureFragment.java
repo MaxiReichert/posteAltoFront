@@ -12,27 +12,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import posteAlto.postealtomovile.R;
-import posteAltoMovile.activity.MainActivity;
-import posteAltoMovile.activity.ModificarUsuario;
+import posteAltoMovile.activity.NuevoPartido;
+import posteAltoMovile.activity.PrincipalActivity;
 import posteAltoMovile.adapter.FechaAdapter;
-import posteAltoMovile.dao.CompetenciaDAO;
 import posteAltoMovile.dao.PartidoDAO;
-import posteAltoMovile.model.Competencia;
 import posteAltoMovile.model.Equipo;
 import posteAltoMovile.model.Partido;
 import posteAltoMovile.model.ResponseBackend;
+import posteAltoMovile.retroFitClient.Constants;
 import posteAltoMovile.retroFitClient.RestClient;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -53,6 +57,9 @@ public class FixtureFragment extends Fragment {
     private Equipo equipoLibre;
     private FechaAdapter fechaAdapter;
     private Integer cantFechas;
+    private Button btnAgrearPartido;
+    private JSONObject datosUsuarioJSON=null;
+    private Integer idCompetencia;
 
     public FixtureFragment() {
         // Required empty public constructor
@@ -62,10 +69,21 @@ public class FixtureFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Integer idCompetencia= getArguments().getInt("idCompetencia");
+        idCompetencia= getArguments().getInt("idCompetencia");
         accessToken= getArguments().getString("accessToken");
 
         View v= inflater.inflate(R.layout.fragment_fixture, container, false);
+        btnAgrearPartido= v.findViewById(R.id.buttonAgrearPartido);
+        String[] datosUsuario= accessToken.split("\\.");
+        String body= new String(Base64.decode(datosUsuario[1], Base64.NO_WRAP));
+        try {
+            datosUsuarioJSON= new JSONObject(body);
+            if(!datosUsuarioJSON.get("rol").equals(Constants.ROL_ADMIN)){
+                btnAgrearPartido.setVisibility(View.GONE);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         txtFecha= v.findViewById(R.id.txtFecha);
         txtEquipoLibre= v.findViewById(R.id.txtEquipoLibre);
@@ -92,6 +110,16 @@ public class FixtureFragment extends Fragment {
             }
         });
 
+        btnAgrearPartido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getContext(), NuevoPartido.class);
+                i.putExtra("idCompetencia", idCompetencia);
+                i.putExtra("accessToken", accessToken);
+                startActivity(i);
+            }
+        });
+
         return v;
     }
 
@@ -100,9 +128,8 @@ public class FixtureFragment extends Fragment {
         Optional<Partido> partidoDummy= partidos.stream().filter(partido ->
                 partido.getLocal()== null || partido.getVisitante() == null).findAny();
 
-        partidos.remove(partidoDummy.get());
-
         if(partidoDummy.isPresent()){
+            partidos.remove(partidoDummy.get());
             if(partidoDummy.get().getLocal() == null)
                 equipoLibre= partidoDummy.get().getVisitante();
             else
@@ -204,8 +231,33 @@ public class FixtureFragment extends Fragment {
             switch(msg.what){
                 case PARTIDOS_OBTENIDOS:
                     partidos= (List<Partido>) msg.obj;
-                    txtFecha.setText("FECHA "+partidos.get(0).getFechaCompetencia());
-                    determinarEquipoLibre();
+                    if(partidos.size() == 0){
+                        alertDialog= new AlertDialog.Builder(getContext()).create();
+                        alertDialog.setTitle("No se ha fixturado aún");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        try {
+                                            if(!datosUsuarioJSON.get("rol").equals(Constants.ROL_ADMIN)){
+                                                Intent i = new Intent(getContext(), PrincipalActivity.class);
+                                                i.putExtra("accessToken", accessToken);
+                                                i.putExtra("refreshToken", "");
+                                                startActivity(i);
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog.show();
+                        break;
+                    }
+                    else {
+                        txtFecha.setText("FECHA " + partidos.get(0).getFechaCompetencia());
+                        determinarEquipoLibre();
+                    }
                     break;
                 case FECHAS_OBTENIDAS:
                     ResponseBackend responseBackend= (ResponseBackend) msg.obj;

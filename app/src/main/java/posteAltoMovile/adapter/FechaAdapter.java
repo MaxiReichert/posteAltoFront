@@ -51,8 +51,18 @@ public class FechaAdapter extends RecyclerView.Adapter<FechaHolder> {
             holder.txtEquipo2.setText(partido.getVisitante().getNombre());
 
             //set resultado
-            holder.txtRdo1.setText(partido.getPuntosLocal().toString());
-            holder.txtRdo2.setText(partido.getPuntosVisitante().toString());
+            if(partido.getPuntosLocal() == null){
+                holder.txtRdo1.setText("");
+            }
+            else{
+                holder.txtRdo1.setText(partido.getPuntosLocal().toString());
+            }
+            if(partido.getPuntosVisitante() == null){
+                holder.txtRdo2.setText("");
+            }
+            else{
+                holder.txtRdo2.setText(partido.getPuntosVisitante().toString());
+            }
 
             //set dirección equipo local
             holder.txtClub.setText(partido.getLocal().getCalle()+" "+partido.getLocal().getNumero());

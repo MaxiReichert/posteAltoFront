@@ -71,7 +71,6 @@
         android:layout_marginLeft="5dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:maxLength="6"
         android:minHeight="48dp" />
 
     <Button

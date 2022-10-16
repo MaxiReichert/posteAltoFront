@@ -15,6 +15,10 @@
             android:icon="@mipmap/icon_score"
             android:title="FIXTURE Y RESULTADOS"></item>
         <item
+            android:id="@+id/optTablaPosiciones"
+            android:icon="@mipmap/icon_tabla_posiciones"
+            android:title="TABLA DE POSICIONES"/>
+        <item
             android:id="@+id/optGym"
             android:icon="@mipmap/icon_marca"
             android:title="GIMNASIOS" />

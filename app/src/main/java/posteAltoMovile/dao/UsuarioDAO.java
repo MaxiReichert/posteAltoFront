@@ -26,7 +26,7 @@ public interface UsuarioDAO {
     Call<ResponseBackend> borrarUsuario(@Path("id") Integer id, @Header("Authorization") String auth);
 
     @GET("usuario/buscarEmail/{email}")
-    Call<ResponseBackend> buscarPorEmail(@Path("email") String email);
+    Call<Usuario> buscarPorEmail(@Path("email") String email);
 
     @POST("usuario/resetPassword")
     Call<ResetPasswordResponse> resetPassword(@Body ResetPasswordRequest request);

@@ -7,11 +7,6 @@ import android.graphics.Color;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.List;
 
@@ -19,25 +14,12 @@ import posteAlto.postealtomovile.R;
 import posteAltoMovile.holder.TablaPosicionesHolder;
 import posteAltoMovile.model.FilaTabla;
 
-public class TablaDePosicionesAdapter extends ArrayAdapter<FilaTabla> {
+public class TablaDePosicionesAdapter {
 
-    private Context contexto;
-    private List<FilaTabla> filaTablaList;
+    public View getView(FilaTabla filaTabla, int position, Context contexto){
+        LayoutInflater inflater = LayoutInflater.from(contexto);
+        View fila = inflater.inflate(R.layout.fila_tabla_posiciones, null);
 
-    public TablaDePosicionesAdapter(Context context, List<FilaTabla> filaTablaList){
-        super(context, R.layout.fragment_tabla_de_posiciones, filaTablaList);
-        this.contexto= context;
-        this.filaTablaList= filaTablaList;
-    }
-
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(this.getContext());
-        View fila = convertView;
-        if (fila == null) {
-            fila = inflater.inflate(R.layout.fila_tabla_posiciones, null);
-        }
         TablaPosicionesHolder holder = (TablaPosicionesHolder) fila.getTag();
 
         if (holder == null) {
@@ -45,7 +27,7 @@ public class TablaDePosicionesAdapter extends ArrayAdapter<FilaTabla> {
             fila.setTag(holder);
         }
 
-        FilaTabla filaEquipo = super.getItem(position);
+        FilaTabla filaEquipo = filaTabla;
         byte[] escudo= Base64.decode(filaEquipo.getEscudo(), Base64.DEFAULT);
         Bitmap imagen= BitmapFactory.decodeByteArray(escudo, 0, escudo.length);
         holder.ivImagen.setImageBitmap(BitmapFactory.decodeByteArray(escudo, 0, escudo.length));

@@ -32,6 +32,14 @@
             android:textStyle="bold"
             android:typeface="sans" />
 
+        <Button
+            android:id="@+id/buttonAgrearPartido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Nuevo Partido"
+            android:background="@drawable/bordes_botones"
+            android:textColor="@color/fondo_toolbar_y_letras_botones"/>
+
         <TextView
             android:id="@+id/txtFecha"
             android:layout_width="310dp"

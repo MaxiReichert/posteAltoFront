@@ -15,49 +15,30 @@ import posteAltoMovile.model.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnNuevoUsuario;
-    private Button btnModificarUsuario;
-    private Button btnAutenticar;
-    private Usuario usuario;
+    private Button btnRegistrarse;
+    private Button btnIniciarSesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Pantalla Principal");
 
-        btnNuevoUsuario= (Button) findViewById(R.id.buttonNuevoUsuario);
-        btnModificarUsuario= findViewById(R.id.button2);
-        btnAutenticar= findViewById(R.id.buttonAutenticar);
+        btnRegistrarse= findViewById(R.id.btnRegistrarse);
+        btnIniciarSesion= findViewById(R.id.btnIniciar);
 
-        usuario= new Usuario();
-        usuario.setId(2);
-        usuario.setEmail("maxi2@ejemplo.com");
-        usuario.setFechaNacimiento("04-01-2022");
-        usuario.setNombre("maxi");
-        usuario.setApellido("reichert");
-
-        btnNuevoUsuario.setOnClickListener(new View.OnClickListener() {
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), NuevoUsuario.class);
-                startActivity(i);
-
-            }
-        });
-
-        btnModificarUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), ModificarUsuario.class);
-                i.putExtra("usuario", usuario);
+                Intent i= new Intent(getApplicationContext(), NuevoUsuario.class);
                 startActivity(i);
             }
         });
 
-        btnAutenticar.setOnClickListener(new View.OnClickListener() {
+        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), Autenticar.class);
+                Intent i= new Intent(getApplicationContext(), Autenticar.class);
                 startActivity(i);
             }
         });
