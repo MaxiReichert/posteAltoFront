@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
 
+import io.github.novacrypto.hashing.Sha256;
 import posteAlto.postealtomovile.R;
 import posteAltoMovile.dao.UsuarioDAO;
 import posteAltoMovile.model.ModificarPasswordRequest;
@@ -96,7 +97,8 @@ public class CargarCodigoRecuperacion extends AppCompatActivity {
                 if(validarContraseña()){
                     ModificarPasswordRequest request= new ModificarPasswordRequest();
                     byte[] pass= editTextContraseña.getText().toString().trim().getBytes(StandardCharsets.UTF_8);
-                    String passEncode= Base64.encodeToString(pass, Base64.NO_WRAP);
+                    byte[] passEncript= Sha256.sha256(pass);
+                    String passEncode= Base64.encodeToString(passEncript, Base64.NO_WRAP);
                     request.setNuevaContraseña(passEncode);
                     request.setResetToken(token);
                     modificarContraseña(request);

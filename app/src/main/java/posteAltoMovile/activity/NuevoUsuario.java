@@ -32,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.Calendar;
 import java.util.regex.Pattern;
 
+import io.github.novacrypto.hashing.Sha256;
 import posteAlto.postealtomovile.R;
 import posteAltoMovile.dao.UsuarioDAO;
 import posteAltoMovile.model.Usuario;
@@ -136,9 +137,9 @@ public class NuevoUsuario extends AppCompatActivity {
                  if(validar()){
 
                      byte[] pass= editTextContraseña.getText().toString().trim().getBytes(StandardCharsets.UTF_8);
-                     String passEncode= Base64.encodeToString(pass, Base64.NO_WRAP);
+                     byte[] passEncript= Sha256.sha256(pass);
+                     String passEncode= Base64.encodeToString(passEncript, Base64.NO_WRAP);
 
-                     System.out.println(passEncode);
 
                      Usuario usuario= new Usuario();
                      usuario.setNombre(editTextNombre.getText().toString().trim());

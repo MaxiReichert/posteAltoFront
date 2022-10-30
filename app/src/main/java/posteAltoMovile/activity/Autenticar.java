@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import io.github.novacrypto.hashing.Sha256;
 import posteAlto.postealtomovile.R;
 import posteAltoMovile.dao.LoginDAO;
 import posteAltoMovile.model.ResponseLogin;
@@ -53,8 +54,9 @@ public class Autenticar extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                byte[] pass = editTextContraseña.getText().toString().trim().getBytes(StandardCharsets.UTF_8);
                 autenticar(editTextCorreo.getText().toString().trim(),
-                        editTextContraseña.getText().toString().trim());
+                        new String(Sha256.sha256(pass)));
             }
         });
 
